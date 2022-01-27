@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MuhkuhTest title="1234.567" subtitle="demo board" pre="lua/board_prepare.lua" post="lua/board_finalize.lua">
+	<Configuration>
+		<Parameter name="LabelValidationFunction">PREFIX-LIST</Parameter>
+		<Parameter name="LabelValidationDataTyp">CSV</Parameter>
+		<Parameter name="LabelValidationData">12345671</Parameter>
+	</Configuration>
+
+	<Documents>
+<!-- Add a link to the KB.
+		<Document name="KB Page">https://...</Document>
+-->
+<!-- Add a link to the documentation for this test.
+		<Document name="Testanweisung">http://...</Document>
+-->
+<!-- Add links to the schematics and layout.
+                <Document name="Schematics">http://...</Document>
+                <Document name="Layout">http://...</Document>
+-->
+	</Documents>
+
+	<System>
+		<Parameter name="manufacturer">1</Parameter>
+		<Parameter name="devicenr">0</Parameter>
+		<Parameter name="hwrev">0</Parameter>
+	</System>
+
+	<Testcase id="org.muhkuh.tests.bootpins.bootpins" name="Chiptyp">
+		<Parameter name="plugin">romloader_jtag</Parameter>
+		<Parameter name="expected_boot_mode">3</Parameter>
+		<Parameter name="expected_strapping_options">7</Parameter>
+		<Parameter name="expected_chip_id">NETX90BPHYR3</Parameter>
+	</Testcase>
+</MuhkuhTest>
