@@ -89,7 +89,7 @@ for strTestVariant in astrTestVariants:
 
     astrArguments = [strJonchki]
     astrArguments.append('install-dependencies')
-    astrArguments.extend(['-v', 'debug'])
+    astrArguments.extend(['-v', 'info'])
     astrArguments.extend([
         '--logfile',
         os.path.join(strWorkingFolder, 'jonchki.log')
