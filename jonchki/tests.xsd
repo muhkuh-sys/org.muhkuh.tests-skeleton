@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+elementFormDefault="qualified"
+vc:minVersion="1.1">
+	<xs:element name="MuhkuhTest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Configuration" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">
+							Set configuration options for the production test.
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Parameter" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="name" use="required" />
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+					<xs:unique name="UniqueConfigurationParameter">
+						<xs:selector xpath="Parameter" />
+						<xs:field xpath="@name" />
+					</xs:unique>
+				</xs:element>
+				<xs:element name="Documents" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">
+							Add links to documents. The links are available in the side bar of the webUI.
+						</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Document" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:annotation>
+										<xs:documentation xml:lang="en">
+											Add one link to a document. The link is available in the side bar of the webUI.
+										</xs:documentation>
+									</xs:annotation>
+									<xs:simpleContent>
+										<xs:extension base="xs:anyURI">
+											<xs:attribute name="name" use="required">
+												<xs:annotation>
+													<xs:documentation xml:lang="en">
+														Set the name for the link. This is the text in the side bar of the webUI.
+													</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+					<xs:unique name="UniqueDocumentName">
+						<xs:selector xpath="Document" />
+						<xs:field xpath="@name" />
+					</xs:unique>
+				</xs:element>
+				<xs:element name="System" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Parameter" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="name" use="required" />
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+					<xs:unique name="UniqueSystemParameter">
+						<xs:selector xpath="Parameter" />
+						<xs:field xpath="@name" />
+					</xs:unique>
+				</xs:element>
+
+				<!-- This is a generic entry. -->
+				<xs:element name="Testcase" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ErrorIf" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="message" use="required" />
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:choice minOccurs="0" maxOccurs="unbounded">
+								<xs:element name="Parameter">
+									<xs:complexType>
+										<xs:simpleContent>
+											<xs:extension base="xs:string">
+												<xs:attribute name="name" use="required" />
+											</xs:extension>
+										</xs:simpleContent>
+									</xs:complexType>
+								</xs:element>
+								<xs:element name="Connection">
+									<xs:complexType>
+										<xs:simpleContent>
+											<xs:extension base="xs:string">
+												<xs:attribute name="name" use="required" />
+											</xs:extension>
+										</xs:simpleContent>
+									</xs:complexType>
+								</xs:element>
+							</xs:choice>
+						</xs:sequence>
+						<xs:attribute name="name" use="required" />
+						<!-- NOTE: There should be one and only one of the attributes "id" and "file". Not both nore none.
+						           This common use case seems to be only possible with a hack in XSD V1.0 . Furthermore it does not seem to work with the VSCode extension.
+						           See here for details: https://stackoverflow.com/questions/33748490/how-to-define-mutually-exclusive-attributes-in-xsd -->
+						<xs:attribute name="id" />
+						<xs:attribute name="file" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="title" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+						The title will appear in the webUI at the top of the screen.
+						It is recommended to include the device number or parts of it.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="subtitle" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+						The subtitle will appear in the webUI at the top of the screen right below the title.
+						It is recommended to use a descriptive name for the production test.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="pre">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+						Define a "pre" action for the production test. This can be a relative path to a LUA or JSX file.
+						It will be executed before the first test step.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="post">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+						Define a "post" action for the production test. This can be a relative path to a LUA or JSX file.
+						It will be executed when a test is finished. The test result does not matter.
+						The "post" action is executed even if the test was not successful.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

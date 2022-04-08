@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jonchki-artifact version="1.0">
+<jonchki-artifact xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:noNamespaceSchemaLocation="jonchki/testcase.xsd"
+                  version="1.0">
 	<info group="com.hilscher.muhkuh.tests"
 	      module="board_tests"
 	      artifact="1234.567_demo_board"
