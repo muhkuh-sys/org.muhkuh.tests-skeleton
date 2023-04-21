@@ -4,7 +4,7 @@
                   version="1.0">
 	<info group="com.hilscher.muhkuh.tests"
 	      module="board_tests"
-	      artifact="1234.567_demo_board"
+	      artifact="1234.567R8_demo_board"
 	      version="0.0.1"
 	      vcs-id="${PROJECT_VERSION_VCS}"
 	      extension="tar.gz">
@@ -19,7 +19,7 @@
 		<dependency group="org.muhkuh.tests"         module="bootpins"              artifact="bootpins"                   version="1.3"/>
 	</dependencies>
 	<actions>
-		<action name="finalizer" file="${prj_root}/finalizer_7832.300R3.lua"/>
+		<action name="finalizer" file="${prj_root}/finalizer_1234.567R8.lua"/>
 		<action name="pack" path="${install_base}">
 			local t = ...
 			local tResult = true

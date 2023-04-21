@@ -21,7 +21,7 @@ print('Building for %s' % tPlatform['platform_id'])
 strCfg_projectFolder = os.path.dirname(os.path.realpath(__file__))
 
 astrTestVariants = [
-    '1234.567'
+    '1234.567R8'
 ]
 
 # This is the Jonchki version to use.
