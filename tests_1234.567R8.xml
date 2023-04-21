@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MuhkuhTest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:noNamespaceSchemaLocation="jonchki/tests.xsd"
-            title="1234.567" subtitle="demo board" pre="lua/board_prepare.lua" post="lua/board_finalize.lua">
+            title="1234.567R8" subtitle="demo board" pre="lua/board_prepare.lua" post="lua/board_finalize.lua">
 	<Configuration>
 		<Parameter name="LabelValidationFunction">PREFIX-LIST</Parameter>
 		<Parameter name="LabelValidationDataTyp">CSV</Parameter>
-		<Parameter name="LabelValidationData">12345671</Parameter>
+		<Parameter name="LabelValidationData">12345678</Parameter>
 	</Configuration>
 
 	<Documents>
