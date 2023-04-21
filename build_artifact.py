@@ -50,10 +50,6 @@ strCfg_jonchkiProjectConfiguration = os.path.join(
     'jonchki',
     'jonchkicfg.xml'
 )
-strCfg_jonchkiFinalizer = os.path.join(
-    strCfg_projectFolder,
-    'finalizer.lua'
-)
 strCfg_jonchkiDependencyLog = os.path.join(
     strCfg_projectFolder,
     'dependency-log.xml'
@@ -90,6 +86,7 @@ for strTestVariant in astrTestVariants:
     astrArguments = [strJonchki]
     astrArguments.append('install-dependencies')
     astrArguments.extend(['-v', 'info'])
+    astrArguments.extend(['--project-root', strCfg_projectFolder])
     astrArguments.extend([
         '--logfile',
         os.path.join(strWorkingFolder, 'jonchki.log')
@@ -108,13 +105,6 @@ for strTestVariant in astrTestVariants:
         os.path.join(
             strCfg_projectFolder,
             'prepare_%s.lua' % strTestVariant
-        )
-    ])
-    astrArguments.extend([
-        '--finalizer',
-        os.path.join(
-            strCfg_projectFolder,
-            'finalizer_%s.lua' % strTestVariant
         )
     ])
     astrArguments.extend(astrJonchkiPlatform)
