@@ -41,6 +41,23 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+				<xs:element name="actions">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="action" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="name" use="required" />
+											<xs:attribute name="file" use="optional" />
+											<xs:attribute name="path" use="optional" />
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
 			</xs:sequence>
 			<xs:attribute name="version" type="xs:decimal" use="required" />
 		</xs:complexType>
