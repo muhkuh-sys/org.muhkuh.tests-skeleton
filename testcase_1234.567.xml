@@ -18,4 +18,34 @@
 		<dependency group="org.muhkuh.tools"         module="muhkuh_tester_webui"   artifact="lua5.4-muhkuh_tester_webui" version="0.0"/>
 		<dependency group="org.muhkuh.tests"         module="bootpins"              artifact="bootpins"                   version="1.3"/>
 	</dependencies>
+	<actions>
+		<action name="finalizer" file="${prj_root}/finalizer_7832.300R3.lua"/>
+		<action name="pack" path="${install_base}">
+			local t = ...
+			local tResult = true
+
+			t:createPackageFile()
+			t:createHashFile()
+			t:createArchive('${prj_root}/targets/${default_archive_name}', 'native')
+
+			-- Copy the documentation.
+			local tLog = t.tLog
+			local pl = t.pl
+			local strSrc = t:replace_template('${build_doc}/generated/pdf/main.pdf')
+			local strDst = t:replace_template('${prj_root}/targets/${root_artifact_artifact}-${root_artifact_version}-${platform_distribution_id}${conditional_platform_distribution_version_separator}${platform_distribution_version}_${platform_cpu_architecture}.pdf')
+			if pl.path.exists(strSrc)==strSrc then
+				local tCopyResult = pl.file.copy(strSrc, strDst, true)
+				if tCopyResult==true then
+				tLog.debug('Copied documentation to %s', strDst)
+				else
+				tLog.error('Failed to copy the documentation from %s to %s .', strSrc, strDst)
+				tResult = nil
+				end
+			else
+				tLog.warning('The documentation does not exist at %s. Please look for previous errors.', strSrc)
+				tResult = nil
+			end
+			return tResult
+		</action>
+	</actions>
 </jonchki-artifact>
