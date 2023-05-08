@@ -120,6 +120,8 @@ vc:minVersion="1.1">
 							</xs:choice>
 						</xs:sequence>
 						<xs:attribute name="name" use="required" />
+						<xs:attribute name="documentation" use="optional" />
+						<xs:attribute name="parameter_file" use="optional" />
 						<!-- NOTE: There should be one and only one of the attributes "id" and "file". Not both nore none.
 						           This common use case seems to be only possible with a hack in XSD V1.0 . Furthermore it does not seem to work with the VSCode extension.
 						           See here for details: https://stackoverflow.com/questions/33748490/how-to-define-mutually-exclusive-attributes-in-xsd -->
