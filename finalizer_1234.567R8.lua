@@ -17,11 +17,4 @@ t:install{
   ['${report_path}']                          = '${install_base}/.jonchki/'
 }
 
--- Create the package information in '.jonchki/package.txt'.
-t:createPackageFile()
--- Create a hash sum for all files in '.jonchki/package.sha384'.
-t:createHashFile()
--- Create an archive from all files.
-t:createArchive('${install_base}/../../../../${default_archive_name}', 'native')
-
 return true
