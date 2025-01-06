@@ -6,7 +6,7 @@
 	      module="productiontests"
 	      artifact="1234.567R8_demo_board"
 	      version="0.0.1"
-	      vcs-id="${PROJECT_VERSION_VCS}"
+	      vcs-id="${prj_version_vcs_long}"
 	      extension="tar.gz">
 		<license name="PROPRIETARY"/>
 		<author name="Change me" url="https://www.hilscher.com/" />
