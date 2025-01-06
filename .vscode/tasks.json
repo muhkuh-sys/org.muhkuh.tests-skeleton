@@ -2,9 +2,9 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "Build for Muhkuchen.",
             "type": "shell",
-            "command": "./build_artifact.py",
+            "command": "./build.sh",
             "problemMatcher": "$gcc",
             "group": {
                 "kind": "build",
