@@ -2,8 +2,8 @@
 <jonchki-artifact xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:noNamespaceSchemaLocation="jonchki/testcase.xsd"
                   version="1.0">
-	<info group="com.hilscher.muhkuh.tests"
-	      module="board_tests"
+	<info group="com.hilscher.productiontests"
+	      module="productiontests"
 	      artifact="1234.567R8_demo_board"
 	      version="0.0.1"
 	      vcs-id="${PROJECT_VERSION_VCS}"
